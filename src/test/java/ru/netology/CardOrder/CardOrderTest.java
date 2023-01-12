@@ -16,13 +16,14 @@ public class CardOrderTest {
 
     @BeforeAll
     static void setupAll() {
-        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\Vfhfn\\Desktop\\HW\\5_AutoTesting\\3_Selenium_Selenide\\HW_1\\CardOrder\\driver\\win\\chromedriver.exe");
-        WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Vfhfn\\Desktop\\HW\\5_AutoTesting\\3_Selenium_Selenide\\HW_1\\CardOrder\\driver\\win\\chromedriver.exe");
+        //WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
     void setUp() {
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-extensions");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
