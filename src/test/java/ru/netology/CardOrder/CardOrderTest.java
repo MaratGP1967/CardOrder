@@ -16,8 +16,8 @@ public class CardOrderTest {
 
     @BeforeAll
     static void setupAll() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Vfhfn\\Desktop\\HW\\5_AutoTesting\\3_Selenium_Selenide\\HW_1\\CardOrder\\driver\\win\\chromedriver.exe");
         WebDriverManager.chromedriver().setup();
-        //System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
     }
 
     @BeforeEach
