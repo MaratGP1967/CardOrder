@@ -28,7 +28,7 @@ public class CardOrderTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         //driver = WebDriverManager.chromedriver().create();
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
     }
 
     @AfterEach
