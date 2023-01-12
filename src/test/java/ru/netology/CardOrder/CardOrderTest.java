@@ -16,7 +16,7 @@ public class CardOrderTest {
 
     @BeforeAll
     static void setupAll() {
-        //WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
         //System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
     }
 
@@ -26,14 +26,14 @@ public class CardOrderTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        driver = WebDriverManager.chromedriver().create();
-        //driver = new ChromeDriver();
+        //driver = WebDriverManager.chromedriver().create();
+        driver = new ChromeDriver();
     }
 
     @AfterEach
     void tearDown() {
         driver.quit();
-        //driver = null;
+        driver = null;
     }
 
     @Test
