@@ -12,16 +12,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CardOrderTest {
     private WebDriver driver;
+    @BeforeAll
+    static void setupAll() {
+        WebDriverManager.chromedriver().setup();
+    }
 
     @BeforeEach
     void setUp() {
-        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
@@ -32,7 +36,6 @@ public class CardOrderTest {
 
     @Test
     void shouldTestCardOrder() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Алексей Бестужев-Рюмин");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79625013494");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -46,7 +49,6 @@ public class CardOrderTest {
 
     @Test
     void shouldNotTestNotCorrectNameCardOrder() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ivan Petrov");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79625013494");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -60,7 +62,6 @@ public class CardOrderTest {
 
     @Test
     void shouldNotTestNotCorrectPhoneCardOrder() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Петров");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+796250134j4");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -74,7 +75,6 @@ public class CardOrderTest {
 
     @Test
     void shouldNotTestWithoutCheckBoxCardOrder() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Петров");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79625013494");
         driver.findElement(By.className("button")).click();
@@ -87,7 +87,6 @@ public class CardOrderTest {
 
     @Test
     void shouldTestEmptyNameCardOrder() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79625013494");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.className("button")).click();
@@ -100,7 +99,6 @@ public class CardOrderTest {
 
     @Test
     void shouldTestEmptyPhoneCardOrder() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Алексей Бестужев-Рюмин");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.className("button")).click();
